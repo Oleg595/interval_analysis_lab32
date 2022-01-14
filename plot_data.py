@@ -2,21 +2,16 @@ import math
 
 import matplotlib.pyplot as plt
 
-def plot_tolmax_iterations(iterations, text):
-    num_iter = [i for i in range(len(iterations))]
-    iterations = [math.fabs(elem) for elem in iterations]
-    plt.title(text)
-    plt.semilogy(num_iter, iterations)
-    plt.xlabel("Номер итерации")
-    plt.ylabel("Значение tolmax")
-    plt.show()
+def plot_argmax(positions, text):
+    x1 = [elem[0] for elem in positions]
+    x2 = [elem[1] for elem in positions]
+    col = ['blue', 'yellow', 'green', 'white', 'red', 'purple', 'black', 'orange', 'pink', 'magenta', 'brown']
 
-def error_position_argmax(positions, text):
-    correct_answer = [0.8, 0.4]
-    rad = [math.sqrt((elem[0] - correct_answer[0]) ** 2 + (elem[1] - correct_answer[1]) ** 2) for elem in positions]
-    num_iter = [i for i in range(len(positions))]
+    for i in range(len(x1)):
+        # plotting the corresponding x with y
+        # and respective color
+        plt.scatter(x1[i], x2[i], c=col[i], s=10,
+                    linewidth=0)
+
     plt.title(text)
-    plt.plot(num_iter, rad)
-    plt.xlabel("Номер итерации")
-    plt.ylabel("Расстояние до верного ответа")
     plt.show()
